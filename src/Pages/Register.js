@@ -22,8 +22,9 @@ function Registration() {
     e.preventDefault();
     try {
 
-      // Verify telephone number has 10 digits
-      if (formData.telephone.length !== 10) {
+      // Verify telephone number
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(formData.telephone)) {
         throw new Error('Please enter a valid telephone number');
       }
 
@@ -34,6 +35,7 @@ function Registration() {
           icon: 'success',
           title: 'Registration Successful',
         });
+        //clear form data
         setFormData({
           name: '',
           address: '',

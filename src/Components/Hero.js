@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import hero from '../Images/hero.jpg';
 import axios from 'axios';
+import { Link} from "react-router-dom";
 
 function Hero() {
   const [showRestaurants, setShowRestaurants] = useState(false);
@@ -35,7 +36,8 @@ function Hero() {
             <div className='pt-4'>
               <button 
                 onClick={handleViewRestaurants}
-                className="bg-primary text-white px-4 py-2 rounded-full hover:bg-primaryDark cursor-pointer"
+                className="bg-primary text-white px-4 py-2 rounded-full 
+                hover:bg-primaryDark cursor-pointer"
               >
                 View Restaurants
               </button>
@@ -49,6 +51,11 @@ function Hero() {
                 <h3 className="text-xl font-bold">{restaurant.name}</h3>
                 <p className="text-black">{restaurant.address}</p>
                 <p className="text-black">{restaurant.telephone}</p>
+                <button 
+                className="bg-primary text-white px-4 py-2 rounded-full 
+                hover:bg-primaryDark cursor-pointer">
+                <Link to={`/details/${restaurant._id}`}>View </Link>
+              </button>
               </div>
             ))}
           </div>
